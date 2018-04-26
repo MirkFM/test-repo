@@ -1,0 +1,73 @@
+.e-btn {
+  color: $clr-secondary;
+  background-color: #fff;
+  border: 1px solid $clr-secondary;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 40px;
+  // text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.5s, border-color 0.5s, color 0.5s;
+
+  &:hover,
+  &:focus {
+    background: $clr-secondary;
+    color: #fff;
+  }
+
+  &.primary {
+    color: #fff;
+    background: $clr-primary;
+    border-color: $clr-primary;
+
+    &:hover,
+    &:focus {
+      color: $clr-primary;
+      background: #fff;
+    }
+  }
+
+  &.secondary {
+    color: #fff;
+    background: $clr-secondary;
+    border-color: $clr-secondary;
+
+    &:hover,
+    &:focus {
+      color: $clr-secondary;
+      background: #fff;
+    }
+  }
+
+  &.ok {
+    color: $clr-valid;
+    border-color: $clr-valid;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: $clr-valid;
+      border-color: $clr-valid;
+    }
+  }
+
+  &.error {
+    color: $clr-error;
+    border-color: $clr-error;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: $clr-error;
+      border-color: $clr-error;
+    }
+  }
+}

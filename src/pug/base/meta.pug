@@ -1,0 +1,241 @@
+//- Meta
+meta(charset="utf-8")/
+meta(http-equiv="x-ua-compatible" content="ie=edge")/
+meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")/
+//- Эти 3 meta-тега *должны* быть расположены первыми в `<head>`
+
+//- Позволяет указывать, откуда могут грузиться ресурсы
+//- Необходимо разместить как можно выше
+//- Правило применяется только к содержимому, следующему за этим тегом
+meta(http-equiv="Content-Security-Policy" content="default-src 'self'")/
+
+//- Имя веб-приложения (следует указывать только в случае, если сайт используется как приложение)
+meta(name="application-name" content="Application Name")/
+
+//- Короткое описание страницы (ограничение — 150 символов)
+meta(name="description" content="Описание страницы")/
+
+//- Контролирует поведение поисковых систем при индексации страницы
+//- Все поисковые системы
+meta(name="robots" content="index,follow,noodp")/
+//- Указание отдельно для Google
+meta(name="googlebot" content="index,follow")/
+
+//- Позволяет указать Google не показывать в поисковой выдаче поле для поиска по сайту
+meta(name="google" content="nositelinkssearchbox")/
+
+//- Позволяет указать Google не предлагать перевести эту страницу
+meta(name="google" content="notranslate")/
+
+//- Подтверждает авторство страницы в Google Search Console
+meta(name="google-site-verification" content="verification_token")/
+
+//- Используется для указания ПО, которое сгенерировало эту страницу
+meta(name="generator" content="program")/
+
+//- Короткое описание тематики вашего сайта
+meta(name="subject" content="тематика вашего сайта")/
+
+//- Очень короткое предложение (до 10 слов), описывающее назначение сайта.
+//- Используется преимущественно для академических работ
+meta(name="abstract" content="")/
+
+//- Полный URL страницы
+meta(name="url" content="https://example.com/")/
+
+meta(name="directory" content="submission")/
+
+//- Полное доменное имя или адрес
+meta(name="url" content="https://example.com/")/
+
+//- Указывает что контент сайта соответствует возрастному рейтингу `General`
+meta(name="rating" content="General")/
+
+//- Позволяет контролировать процесс передачи реферальных данных
+meta(name="referrer" content="never")/
+
+//- Отключает автоматическое определение и форматирование телефонных номеров
+meta(name="format-detection" content="telephone=no")/
+
+//- Полностью отключает предзагрузку DNS-адресов
+meta(http-equiv="x-dns-prefetch-control" content="off")/
+
+//- Сохраняет cookie в веб-браузере для клиентской аутентификации
+meta(http-equiv="set-cookie" content="name=value; expires=date; path=url")/
+
+//- Определяет, то, что страница должна грузиться в определённом фрейме
+meta(http-equiv="Window-Target" content="_value")/
+
+//- Geo-теги
+meta(name="ICBM" content="latitude, longitude")/
+meta(name="geo.position" content="latitude;longitude")/
+//- Country code (ISO 3166-1): mandatory, state code (ISO 3166-2): optional; eg. content="US" / content="US-NY"
+meta(name="geo.region" content="country[-state]")/
+//- eg. content="New York City"
+meta(name="geo.placename" content="city/town")/
+
+
+//- Facebook / Open Graph
+meta(property="fb:app_id" content="123456789")/
+meta(property="og:url" content="https://example.com/page.html")/
+meta(property="og:type" content="website")/
+meta(property="og:title" content="Content Title")/
+meta(property="og:image" content="https://example.com/image.jpg")/
+meta(property="og:description" content="Description Here")/
+meta(property="og:site_name" content="Site Name")/
+meta(property="og:locale" content="en_US")/
+meta(property="article:author" content="")/
+//- Facebook: https://developers.facebook.com/docs/sharing/webmasters#markup
+//- Open Graph: http://ogp.me/
+
+//- Facebook / Instant Articles
+meta(charset="utf-8")/
+meta(property="op:markup_version" content="v1.0")/
+
+//- URL веб-версии этой страницы
+link(rel="canonical" href="http://example.com/article.html")/
+
+//- Стиль, используемый для этой страницы
+meta(property="fb:article_style" content="myarticlestyle")/
+
+
+//- Twitter
+meta(name="twitter:card" content="summary")/
+meta(name="twitter:site" content="@site_account")/
+meta(name="twitter:creator" content="@individual_account")/
+meta(name="twitter:url" content="https://example.com/page.html")/
+meta(name="twitter:title" content="Content Title")/
+meta(name="twitter:description" content="Content description less than 200 characters")/
+meta(name="twitter:image" content="https://example.com/image.jpg")/
+//- Больше информации: https://dev.twitter.com/cards/getting-started
+//- Валидация meta-тегов Twitter: https://dev.twitter.com/docs/cards/validation/validator
+
+
+//- Google+ / Schema.org
+link(href="https://plus.google.com/+YourPage" rel="publisher")/
+meta(itemprop="name" content="Заголовок")/
+meta(itemprop="description" content="Описание страницы, лимит — 200 символов")/
+meta(itemprop="image" content="https://example.com/image.jpg")/
+
+
+//- OEmbed
+link(rel="alternate" type="application/json+oembed" href="http://example.com/services/oembed?url=http%3A%2F%2Fexample.com%2Ffoo%2F&amp;format=json"
+  title="oEmbed Profile: JSON")/
+link(rel="alternate" type="text/xml+oembed" href="http://example.com/services/oembed?url=http%3A%2F%2Fexample.com%2Ffoo%2F&amp;format=xml" title="oEmbed Profile: XML")/
+
+//- Apple iOS
+//- Баннер для перехода на страницу приложения в AppStore
+meta(name="apple-itunes-app" content="app-id=APP_ID,affiliate-data=AFFILIATE_ID,app-argument=SOME_TEXT")/
+
+//- Отключает автоматическое определение и форматирование телефонных номеров
+meta(name="format-detection" content="telephone=no")/
+
+//- Добавить на домашний экран
+meta(name="apple-mobile-web-app-capable" content="yes")/
+meta(name="apple-mobile-web-app-status-bar-style" content="black")/
+meta(name="apple-mobile-web-app-title" content="App Title")/
+
+//- Touch Icons
+link(rel="apple-touch-icon" href="path/to/apple-touch-icon.png")/
+link(rel="apple-touch-icon-precomposed" href="path/to/apple-touch-icon-precomposed.png")/
+//- В большинстве случаев одной иконки размером 180×180px достаточно
+
+//- Изображение, отображаемое при загрузке
+link(rel="apple-touch-startup-image" href="path/to/startup.png")/
+
+//- Больше информации: https://developer.apple.com/safari/library/documentation/appleapplications/reference/safarihtmlref/articles/metatags.html
+
+//- Apple Safari
+//- Закреплённый сайт
+link(rel="mask-icon" href="path/to/icon.svg" color="red")/
+
+
+//- Google Android
+//- Цвет темы в Chrome
+//- https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android?hl=en
+meta(name="theme-color" content="#E64545")/
+
+//- Добавить на домашний экран
+meta(name="mobile-web-app-capable" content="yes")/
+//- Больше информации: https://developer.chrome.com/multidevice/android/installtohomescreen
+
+//- Google Chrome
+link(rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/APP_ID")/
+
+//- Отключить предложение перевести страницу
+meta(name="google" value="notranslate")/
+
+//- Microsoft Internet Explorer
+meta(http-equiv="x-ua-compatible" content="ie=edge")/
+meta(http-equiv="cleartype" content="on")/
+meta(name="skype_toolbar" content="skype_toolbar_parser_compatible")/
+
+//- Отключает подсветку ссылок в IE 10 для Windows Phone (https://blogs.windows.com/buildingapps/2012/11/15/adapting-your-webkit-optimized-site-for-internet-explorer-10/)
+meta(name="msapplication-tap-highlight" content="no")/
+
+//- Закреплённые сайты (https://msdn.microsoft.com/en-us/library/dn255024(v=vs.85).aspx)
+meta(name="application-name" content="Contoso Pinned Site Caption")/
+meta(name="msapplication-tooltip" content="Example Tooltip Text")/
+meta(name="msapplication-starturl" content="/")/
+
+meta(name="msapplication-config" content="http://example.com/browserconfig.xml")/
+
+meta(name="msapplication-allowDomainApiCalls" content="true")/
+meta(name="msapplication-allowDomainMetaTags" content="true")/
+meta(name="msapplication-badge" content="frequency=30; polling-uri=http://example.com/id45453245/polling.xml")/
+meta(name="msapplication-navbutton-color" content="#FF3300")/
+meta(name="msapplication-notification" content="frequency=60;polling-uri=http://example.com/livetile")/
+meta(name="msapplication-square150x150logo" content="path/to/logo.png")/
+meta(name="msapplication-square310x310logo" content="path/to/largelogo.png")/
+meta(name="msapplication-square70x70logo" content="path/to/tinylogo.png")/
+meta(name="msapplication-wide310x150logo" content="path/to/widelogo.png")/
+meta(name="msapplication-task" content="name=Check Order Status;action-uri=./orderStatus.aspx?src=IE9;icon-uri=./favicon.ico")/
+meta(name="msapplication-task-seperator" content="1")/
+meta(name="msapplication-TileColor" content="#FF3300")/
+meta(name="msapplication-TileImage" content="path/to/tileimage.jpg")/
+meta(name="msapplication-window" content="width=1024;height=768")/
+
+
+//- Ссылки на мобильные приложения
+//- iOS
+meta(property="al:ios:url" content="applinks://docs")/
+meta(property="al:ios:app_store_id" content="12345")/
+meta(property="al:ios:app_name" content="App Links")/
+//- Android
+meta(property="al:android:url" content="applinks://docs")/
+meta(property="al:android:app_name" content="App Links")/
+meta(property="al:android:package" content="org.applinks")/
+//- Web-фоллбек
+meta(property="al:web:url" content="http://applinks.org/documentation")/
+//- Больше информации: http://applinks.org/documentation/
+
+
+//- 360 Browser
+//- Указывает движок рендеринга
+meta(name="renderer" content="webkit|ie-comp|ie-stand")/
+
+
+//- QQ Mobile Browser
+//- Блокирует изменение ориентации страницы, устанавливая указанную
+meta(name="x5-orientation" content="landscape/portrait")/
+//- Страница будет показана в полноэкранном режиме
+meta(name="x5-fullscreen" content="true")/
+//- Страница будет отображаться в режиме "Приложение"
+meta(name="x5-page-mode" content="app")/
+
+
+//- UC Mobile Browser
+//- Блокирует изменение ориентации страницы, устанавливая указанную
+meta(name="screen-orientation" content="landscape/portrait")/
+//- Страница будет показана в полноэкранном режиме
+meta(name="full-screen" content="yes")/
+//- Браузер будет отображать изображения даже если включён "текстовый режим"
+meta(name="imagemode" content="force")/
+//- Страница будет отображаться в режиме "Приложение"
+meta(name="browsermode" content="application")/
+//- Отключает "ночной режим" для этой страницы
+meta(name="nightmode" content="disable")/
+//- Упрощает страницу для уменьшения потребления трафика
+meta(name="layoutmode" content="fitscreen")/
+//- Отключает опцию масштабирования шрифтов в случае, если на странице присутствует большое количество текста
+meta(name="wap-font-scale" content="no")/

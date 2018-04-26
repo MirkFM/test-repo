@@ -1,0 +1,39 @@
+{
+  "form.field.cardnumber.val": "",
+  "form.field.cardnumber.placeholder": "Card number",
+  "form.field.cardnumber.hint.error": "This field is required",
+  "form.field.cardnumber.hint.help": "Help text from this field",
+
+  "form.field.expdate.val": "",
+  "form.field.expdate.placeholder": "MM / YY",
+  "form.field.expdate.hint.error": "This field is required",
+  "form.field.expdate.hint.help": "Help text from this field",
+
+  "form.field.cvc.val": "",
+  "form.field.cvc.placeholder": "CVC",
+  "form.field.cvc.hint.error": "This field is required",
+  "form.field.cvc.hint.help": "Help text from this field",
+
+  "form.field.cardholder.val": "",
+  "form.field.cardholder.placeholder": "Cardholder",
+  "form.field.cardholder.hint.error": "This field is required",
+  "form.field.cardholder.hint.help": "Help text from this field",
+
+  "form.field.email.val": "",
+  "form.field.email.placeholder": "E-mail",
+  "form.field.email.hint.error": "This field is required",
+  "form.field.email.hint.help": "Help text from this field",
+
+  "form.field.phone.val": "",
+  "form.field.phone.placeholder": "Phone",
+  "form.field.phone.hint.error": "This field is required",
+  "form.field.phone.hint.help": "Help text from this field",
+
+  "form.field.city.val": "",
+  "form.field.city.placeholder": "City",
+  "form.field.city.hint.error": "This field is required",
+  "form.field.city.hint.help": "Help text from this field",
+
+  "form.btn.submit.val": "PAY 1000 $",
+  "form.send.receipt.label": "Send receipt to email"
+}

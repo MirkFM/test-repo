@@ -1,0 +1,29 @@
+.s-popup {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;
+  background: rgba(#000, 0.85);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    position: relative;
+    flex: 1 0 auto;
+
+    &.valign-middle {
+      display: flex;
+      align-self: center;
+      align-items: center;
+
+      @include only("tablet-") {
+        align-self: initial;
+        align-items: top;
+      }
+    }
+  }
+}

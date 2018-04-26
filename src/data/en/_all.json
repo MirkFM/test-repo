@@ -1,0 +1,9 @@
+{
+  "lang": "en",
+  "title": "Page title",
+  "form.title": "Payonline.com",
+  "form.logo": "/build/img/avito.jpg",
+
+  "form.order.title": "Order №123456",
+  "form.order.sum": "1000 $"
+}

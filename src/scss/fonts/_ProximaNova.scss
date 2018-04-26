@@ -1,0 +1,6 @@
+@import "mixin/font";
+
+$font-name: "ProximaNova" !default;
+$font-path: "../fonts/ProximaNova/ProximaNova" !default;
+
+@include addFonts($font-name, $font-path, "T", "L", "R", "RI", "B", "BK");

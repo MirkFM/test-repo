@@ -1,0 +1,39 @@
+include /node_modules/bemto.pug/bemto
+include /src/pug/settings/bemto-settings
+include /src/pug/utils/function
+
+doctype html
+html(lang=data("lang"))
+  head
+    include base/meta/base
+      title= data("title")
+      block head_link
+        link(rel='stylesheet', href='/build/css/fonts.min.css')/
+        link(rel='stylesheet', href="/build/css/style.min.css")/
+  body
+    +b.s-popup
+      +e.content.valign-middle
+        +b.s-payment-form
+          +e.block
+            +e.header
+              +e.logo
+                +e.IMG.logo-img(src=data("form.logo"))
+              +e.close.js-popup-close
+
+            +e.wrap
+              +e.order
+                +e.order-title=data("form.title")
+                +e.order-descr=data("form.order.title")
+                block order-sum
+
+              block content
+
+          +e.wrap
+            +e.footer
+              +e.payment-list
+                each paymentIcon in ['payonline', 'visa', 'mastercard', 'mir']
+                  +e.payment-icon(class=paymentIcon)
+
+              block privacy-policy
+
+    script(src="/build/js/main.js")

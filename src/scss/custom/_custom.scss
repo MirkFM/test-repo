@@ -1,0 +1,25 @@
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin animation($name, $sec) {
+  animation-name: $name;
+  animation-duration: $sec;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@mixin bgclr($color) {
+  background: linear-gradient(
+    120deg,
+    $color,
+    lighten($color, 6%) 15%,
+    $color 15%,
+    lighten($color, 6%) 25%,
+    $color 25%,
+    lighten($color, 6%) 80%,
+    $color 80%,
+    lighten($color, 6%)
+  );
+}

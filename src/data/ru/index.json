@@ -1,0 +1,39 @@
+{
+  "form.field.cardnumber.val": "",
+  "form.field.cardnumber.placeholder": "Номер карты",
+  "form.field.cardnumber.hint.error": "Данное поле обязательно для заполнения",
+  "form.field.cardnumber.hint.help": "Текст подсказки для поля",
+
+  "form.field.expdate.val": "",
+  "form.field.expdate.placeholder": "ММ / ГГ",
+  "form.field.expdate.hint.error": "Данное поле обязательно для заполнения",
+  "form.field.expdate.hint.help": "Текст подсказки для поля",
+
+  "form.field.cvc.val": "",
+  "form.field.cvc.placeholder": "CVC",
+  "form.field.cvc.hint.error": "Данное поле обязательно для заполнения",
+  "form.field.cvc.hint.help": "Текст подсказки для поля",
+
+  "form.field.cardholder.val": "",
+  "form.field.cardholder.placeholder": "Держатель карты",
+  "form.field.cardholder.hint.error": "Данное поле обязательно для заполнения",
+  "form.field.cardholder.hint.help": "Текст подсказки для поля",
+
+  "form.field.email.val": "",
+  "form.field.email.placeholder": "E-mail",
+  "form.field.email.hint.error": "Данное поле обязательно для заполнения",
+  "form.field.email.hint.help": "Текст подсказки для поля",
+
+  "form.field.phone.val": "",
+  "form.field.phone.placeholder": "Телефон",
+  "form.field.phone.hint.error": "Данное поле обязательно для заполнения",
+  "form.field.phone.hint.help": "Текст подсказки для поля",
+
+  "form.field.city.val": "",
+  "form.field.city.placeholder": "Город",
+  "form.field.city.hint.error": "Данное поле обязательно для заполнения",
+  "form.field.city.hint.help": "Текст подсказки для поля",
+
+  "form.btn.submit.val": "Оплатить 1000 ₽",
+  "form.send.receipt.label": "Отправить подтверждение на email"
+}

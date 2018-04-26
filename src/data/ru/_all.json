@@ -1,0 +1,9 @@
+{
+  "lang": "ru",
+  "title": "Платежная форма",
+  "form.title": "Avito.ru",
+  "form.logo": "/build/img/avito.jpg",
+
+  "form.order.title": "Заказ №123456",
+  "form.order.sum": "1000 ₽"
+}
