@@ -4,8 +4,8 @@ const { taskPath: path } = global;
 const gulp = require('gulp');
 const del = require('del');
 const filePath = require('path');
-const tsify = require('tsify');
 const browserify = require('browserify');
+const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 
@@ -25,11 +25,10 @@ gulp.task('build:script', () => {
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.data((file) => {
       const fileFullName = file.path;
-      const fileNameForSave = `${filePath.basename(fileFullName, '.ts')}.js`;
+      const fileNameForSave = `${filePath.basename(fileFullName)}`;
 
-      return browserify()
-        .add(fileFullName)
-        .plugin(tsify)
+      return browserify(fileFullName)
+        .transform(babelify)
         .bundle()
         .pipe(source(fileNameForSave))
         .pipe(buffer())
@@ -45,11 +44,10 @@ gulp.task('dev:script', () => {
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.data((file) => {
       const fileFullName = file.path;
-      const fileNameForSave = `${filePath.basename(fileFullName, '.ts')}.js`;
+      const fileNameForSave = `${filePath.basename(fileFullName)}`;
 
-      return browserify()
-        .add(fileFullName)
-        .plugin(tsify)
+      return browserify(fileFullName)
+        .transform(babelify)
         .bundle()
         .pipe(source(fileNameForSave))
         .pipe(buffer())

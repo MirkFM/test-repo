@@ -6,7 +6,7 @@ const srcPath = {
   html: ['src/pug/*.pug', '!src/pug/_*.pug'],
   icon: './src/icons/*.svg',
   image: ['./src/img/**/*.*', '!src/img/images/**/*.*'],
-  script: './src/ts/*.ts',
+  script: './src/js/*.js',
   style: './src/scss/*.scss',
   vendor: './src/vendor/**/*.*',
 };
@@ -26,6 +26,7 @@ const buildPath = {
 
 let watchPath = {
   html: ['./src/pug/**/*.pug', './src/data/**/*.json'],
+  script: './src/js/**/*.js',
   style: './src/scss/**/*.scss',
 };
 

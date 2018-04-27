@@ -4,24 +4,16 @@
   "stylelint.enable": true,
   "prettier.eslintIntegration": true,
   "prettier.stylelintIntegration": true,
-  "typescript.tsdk": "./node_modules/typescript/lib",
+
   "eslint.nodePath": "./node_modules/eslint",
   "eslint.options": {
     "configFile": ".eslintrc.js"
   },
   "eslint.validate": [
-    "javascript",
-    "typescript"
+    "javascript"
   ],
-  "css.validate": true,
   "scss.validate": true,
   "[javascript]": {
-    "editor.formatOnSave": true
-  },
-  "[typescript]": {
-    "editor.formatOnSave": true
-  },
-  "[css]": {
     "editor.formatOnSave": true
   },
   "[scss]": {

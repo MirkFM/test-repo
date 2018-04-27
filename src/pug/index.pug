@@ -1,9 +1,9 @@
 extends _layout.pug
 
 mixin formField(fieldName)
-  +e.field
+  +e.field.js-field
     +e.input(class=fieldName)
-      input(type="text" class="js-" + fieldName value=data("form.field." + fieldName + ".val") placeholder=data("form.field." + fieldName + ".placeholder"))/
+      input(type="text" data-type=fieldName value=data("form.field." + fieldName + ".val") placeholder=data("form.field." + fieldName + ".placeholder"))/
     +e.hint-icon
     //- +e.hint-text.valid=data("form.field." + fieldName + ".hint.help")
     //- +e.hint-text.error=data("form.field." + fieldName+ ".hint.error")
