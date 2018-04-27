@@ -2,6 +2,8 @@ import * as vanillaTextMask from 'vanilla-text-mask';
 import emailMask from 'text-mask-addons/dist/emailMask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 
+import { getPaymentSystem } from './paymentSystem';
+
 export const maskPattern = {
   '#': /\d/,
   S: /[a-zA-Z ]/,
@@ -11,8 +13,10 @@ export const maskPattern = {
 export function prepareMaskArray(array) {
   const result = [];
   const patterns = Object.keys(maskPattern);
+
   for (let i = 0; i < array.length; i += 1) {
     const arrItem = array[i];
+
     if (typeof arrItem === 'string') {
       for (let j = 0; j < arrItem.length; j += 1) {
         const symbol = arrItem[j];
@@ -45,13 +49,56 @@ export const presetMask = {
     pipe(conformedValue) {
       return { value: conformedValue.toUpperCase() };
     },
+    guide: true,
+    placeholderChar: '\u2000',
   },
 
   cardnumber: {
-    mask() {
-      return prepareMaskArray(['#### #### #### ####']);
+    mask(rawValue) {
+      const correctionValue = rawValue.replace(/[^\d]/gi, '');
+      const paymentSystemInfo = getPaymentSystem(correctionValue);
+      const inputCardLength = correctionValue.length;
+      let maskNumLength = 19;
+
+      if (paymentSystemInfo) {
+        const cardLengthList = paymentSystemInfo.cardLength;
+
+        for (let i = cardLengthList.length - 1; i >= 0; i -= 1) {
+          const cardLengthSize = cardLengthList[i];
+
+          if (cardLengthSize >= inputCardLength) {
+            maskNumLength = cardLengthSize;
+          }
+        }
+
+        if (cardLengthList.indexOf(maskNumLength) === -1) {
+          maskNumLength = cardLengthList[cardLengthList.length - 1];
+        }
+      }
+
+      switch (maskNumLength) {
+        case 14:
+          return prepareMaskArray(['#### ##### #####']);
+
+        case 15:
+          return prepareMaskArray(['##### ##### #####']);
+
+        case 16:
+          return prepareMaskArray(['#### #### #### ####']);
+
+        case 17:
+          return prepareMaskArray(['#### #### #### #####']);
+
+        case 18:
+          return prepareMaskArray(['#### #### #### #### ##']);
+
+        default:
+          return prepareMaskArray(['#### #### #### #### ###']);
+      }
     },
     pipe: null,
+    guide: true,
+    placeholderChar: '\u2000',
   },
 
   city: {
@@ -66,6 +113,8 @@ export const presetMask = {
       return prepareMaskArray(resultArr);
     },
     pipe: null,
+    guide: true,
+    placeholderChar: '\u2000',
   },
 
   cvc: {
@@ -73,6 +122,8 @@ export const presetMask = {
       return prepareMaskArray(['###']);
     },
     pipe: null,
+    guide: true,
+    placeholderChar: '\u2000',
   },
 
   email: {
@@ -80,6 +131,8 @@ export const presetMask = {
       return emailMask.mask(rawValue, config);
     },
     pipe: null,
+    guide: true,
+    placeholderChar: '\u2000',
   },
 
   expdate: {
@@ -91,12 +144,15 @@ export const presetMask = {
 
       return pipeFunction(conformedValue);
     },
+    guide: true,
+    placeholderChar: '\u2000',
   },
 
   phone: {
     mask(rawValue) {
       const startSymbolPosition = rawValue.search(/[+1-9]/);
       const startSymbol = rawValue[startSymbolPosition];
+
       if (startSymbol === '8') {
         return prepareMaskArray(['8 (', /[1-9]/, '##) ###-##-##']);
       } else if (startSymbol === '+') {
@@ -105,6 +161,8 @@ export const presetMask = {
       return prepareMaskArray(['+7 (', /[1-9]/, '##) ###-##-##']);
     },
     pipe: null,
+    guide: true,
+    placeholderChar: '\u2000',
   },
 };
 
@@ -116,8 +174,8 @@ export function setMask(element, maskName) {
       inputElement: element,
       mask: presetMask[maskName].mask,
       pipe: presetMask[maskName].pipe,
-      guide: true,
-      placeholderChar: '\u2000',
+      guide: presetMask[maskName].guide,
+      placeholderChar: presetMask[maskName].placeholderChar,
     });
   }
 }

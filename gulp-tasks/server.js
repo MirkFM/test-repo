@@ -2,8 +2,6 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 
 gulp.task('server:init', () => {
-  'use strict';
-
   browserSync.init({
     rewriteRules: [
       {
@@ -20,8 +18,6 @@ gulp.task('server:init', () => {
 });
 
 gulp.task('server:reload', (done) => {
-  'use strict';
-
   browserSync.reload();
   done();
 });

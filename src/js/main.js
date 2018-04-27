@@ -3,7 +3,7 @@ import { setMask } from './module/presetMask';
 const fieldSelector = '.js-field';
 const elements = document.querySelectorAll(fieldSelector);
 
-function valid(field, validType) {
+function isValid(field, validType) {
   return false;
 }
 
@@ -31,7 +31,7 @@ for (let i = 0; i < elements.length; i += 1) {
     input.addEventListener('blur', () => {
       field.classList.remove('focus');
 
-      if (valid(input, dataType)) {
+      if (isValid(input, dataType)) {
         field.classList.add('valid');
       } else {
         field.classList.add('error');

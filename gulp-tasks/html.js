@@ -11,16 +11,10 @@ const { argv } = yargs;
 
 const gulpWatch = gulp.watch;
 
-gulp.task('clean:html', () => {
-  'use strict';
+gulp.task('clean:html', () => del(`${path.build.html}*.html`));
 
-  return del(`${path.build.html}*.html`);
-});
-
-gulp.task('build:html', () => {
-  'use strict';
-
-  return gulp
+gulp.task('build:html', () =>
+  gulp
     .src(path.src.html)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.data((file) => {
@@ -74,13 +68,8 @@ gulp.task('build:html', () => {
     .pipe($.eol(path.src.lineending))
     .pipe($.insert.append(path.src.lineending))
     .pipe($.htmllint())
-    .pipe(gulp.dest(path.build.html));
-});
+    .pipe(gulp.dest(path.build.html)));
 
 gulp.task('dev:html', gulp.series('build:html'));
 
-gulp.task('watch:html', () => {
-  'use strict';
-
-  return gulpWatch(path.watch.html, gulp.series('dev:html', 'server:reload'));
-});
+gulp.task('watch:html', () => gulpWatch(path.watch.html, gulp.series('dev:html', 'server:reload')));

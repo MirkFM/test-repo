@@ -11,16 +11,10 @@ const buffer = require('vinyl-buffer');
 
 const gulpWatch = gulp.watch;
 
-gulp.task('clean:script', () => {
-  'use strict';
+gulp.task('clean:script', () => del(path.build.script));
 
-  return del(path.build.script);
-});
-
-gulp.task('build:script', () => {
-  'use strict';
-
-  return gulp
+gulp.task('build:script', () =>
+  gulp
     .src(path.src.script)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.data((file) => {
@@ -33,13 +27,10 @@ gulp.task('build:script', () => {
         .pipe(source(fileNameForSave))
         .pipe(buffer())
         .pipe(gulp.dest(path.build.script));
-    }));
-});
+    })));
 
-gulp.task('dev:script', () => {
-  'use strict';
-
-  return gulp
+gulp.task('dev:script', () =>
+  gulp
     .src(path.src.script)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.data((file) => {
@@ -52,11 +43,7 @@ gulp.task('dev:script', () => {
         .pipe(source(fileNameForSave))
         .pipe(buffer())
         .pipe(gulp.dest(path.build.script));
-    }));
-});
+    })));
 
-gulp.task('watch:script', () => {
-  'use strict';
-
-  return gulpWatch(path.watch.script, gulp.series('dev:script', 'server:reload'));
-});
+gulp.task('watch:script', () =>
+  gulpWatch(path.watch.script, gulp.series('dev:script', 'server:reload')));

@@ -6,16 +6,10 @@ const del = require('del');
 
 const gulpWatch = gulp.watch;
 
-gulp.task('clean:style', () => {
-  'use strict';
+gulp.task('clean:style', () => del(path.build.style));
 
-  return del(path.build.style);
-});
-
-gulp.task('build:style', () => {
-  'use strict';
-
-  return gulp
+gulp.task('build:style', () =>
+  gulp
     .src(path.src.style)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.sass_glob())
@@ -28,13 +22,10 @@ gulp.task('build:style', () => {
     .pipe($.eol(path.src.lineending))
     .pipe($.insert.append(path.src.lineending))
     .pipe($.ext_replace('.min.css'))
-    .pipe(gulp.dest(path.build.style));
-});
+    .pipe(gulp.dest(path.build.style)));
 
-gulp.task('dev:style', () => {
-  'use strict';
-
-  return gulp
+gulp.task('dev:style', () =>
+  gulp
     .src(path.src.style)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.sourcemaps.init())
@@ -51,11 +42,7 @@ gulp.task('dev:style', () => {
     .pipe($.insert.append(path.src.lineending))
     .pipe($.ext_replace('.min.css'))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(path.build.style));
-});
+    .pipe(gulp.dest(path.build.style)));
 
-gulp.task('watch:style', () => {
-  'use strict';
-
-  return gulpWatch(path.watch.style, gulp.series('dev:style', 'server:reload'));
-});
+gulp.task('watch:style', () =>
+  gulpWatch(path.watch.style, gulp.series('dev:style', 'server:reload')));

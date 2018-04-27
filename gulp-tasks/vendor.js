@@ -6,28 +6,18 @@ const del = require('del');
 
 const gulpWatch = gulp.watch;
 
-gulp.task('clean:vendor', () => {
-  'use strict';
+gulp.task('clean:vendor', () => del(path.build.vendor));
 
-  return del(path.build.vendor);
-});
-
-gulp.task('build:vendor', () => {
-  'use strict';
-
-  return gulp
+gulp.task('build:vendor', () =>
+  gulp
     .src(path.src.vendor)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.newer(path.build.vendor))
     .pipe($.eol(path.src.lineending))
     .pipe($.insert.append(path.src.lineending))
-    .pipe(gulp.dest(path.build.vendor));
-});
+    .pipe(gulp.dest(path.build.vendor)));
 
 gulp.task('dev:vendor', gulp.series('build:vendor'));
 
-gulp.task('watch:vendor', () => {
-  'use strict';
-
-  return gulpWatch(path.watch.vendor, gulp.series('dev:vendor', 'server:reload'));
-});
+gulp.task('watch:vendor', () =>
+  gulpWatch(path.watch.vendor, gulp.series('dev:vendor', 'server:reload')));

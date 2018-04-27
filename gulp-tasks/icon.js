@@ -6,16 +6,10 @@ const del = require('del');
 
 const gulpWatch = gulp.watch;
 
-gulp.task('clean:icon', () => {
-  'use strict';
+gulp.task('clean:icon', () => del(path.build.icon));
 
-  return del(path.build.icon);
-});
-
-gulp.task('build:icon', () => {
-  'use strict';
-
-  return gulp
+gulp.task('build:icon', () =>
+  gulp
     .src(path.src.icon)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.iconfont({
@@ -46,13 +40,8 @@ gulp.task('build:icon', () => {
         .pipe($.ext_replace('.scss'))
         .pipe(gulp.dest(path.build.iconHelper));
     })
-    .pipe(gulp.dest(path.build.icon));
-});
+    .pipe(gulp.dest(path.build.icon)));
 
 gulp.task('dev:icon', gulp.series('build:icon'));
 
-gulp.task('watch:icon', () => {
-  'use strict';
-
-  return gulpWatch(path.watch.icon, gulp.series('dev:icon', 'server:reload'));
-});
+gulp.task('watch:icon', () => gulpWatch(path.watch.icon, gulp.series('dev:icon', 'server:reload')));

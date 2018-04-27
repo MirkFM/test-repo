@@ -6,26 +6,15 @@ const del = require('del');
 
 const gulpWatch = gulp.watch;
 
-gulp.task('clean:font', () => {
-  'use strict';
+gulp.task('clean:font', () => del(path.build.font));
 
-  return del(path.build.font);
-});
-
-gulp.task('build:font', () => {
-  'use strict';
-
-  return gulp
+gulp.task('build:font', () =>
+  gulp
     .src(path.src.font)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.newer(path.build.font))
-    .pipe(gulp.dest(path.build.font));
-});
+    .pipe(gulp.dest(path.build.font)));
 
 gulp.task('dev:font', gulp.series('build:font'));
 
-gulp.task('watch:font', () => {
-  'use strict';
-
-  return gulpWatch(path.watch.font, gulp.series('dev:font', 'server:reload'));
-});
+gulp.task('watch:font', () => gulpWatch(path.watch.font, gulp.series('dev:font', 'server:reload')));

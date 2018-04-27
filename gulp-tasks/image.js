@@ -7,16 +7,10 @@ const pngquant = require('imagemin-pngquant');
 
 const gulpWatch = gulp.watch;
 
-gulp.task('clean:image', () => {
-  'use strict';
+gulp.task('clean:image', () => del(path.build.image));
 
-  return del(path.build.image);
-});
-
-gulp.task('build:image', () => {
-  'use strict';
-
-  return gulp
+gulp.task('build:image', () =>
+  gulp
     .src(path.src.image)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
     .pipe($.cached('images'))
@@ -34,13 +28,9 @@ gulp.task('build:image', () => {
       images_path: path.build.image,
       css_path: path.build.style,
     }))
-    .pipe(gulp.dest(path.build.compassHelper));
-});
+    .pipe(gulp.dest(path.build.compassHelper)));
 
 gulp.task('dev:image', gulp.series('build:image'));
 
-gulp.task('watch:image', () => {
-  'use strict';
-
-  return gulpWatch(path.watch.image, gulp.series('dev:image', 'server:reload'));
-});
+gulp.task('watch:image', () =>
+  gulpWatch(path.watch.image, gulp.series('dev:image', 'server:reload')));
