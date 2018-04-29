@@ -18,8 +18,4 @@ build
 src/scss/helpers/*.scss
 !src/scss/helpers/__.scss
 
-
 pages
-
-# Lock files
-package-lock.json
