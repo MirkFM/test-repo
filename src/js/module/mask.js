@@ -37,7 +37,7 @@ export function prepareMaskArray(array) {
 export const presetMask = {
   cardholder: {
     mask(rawValue) {
-      const correctionValue = rawValue.replace(/[^a-zA-Z ]/gi, '');
+      const correctionValue = rawValue.replace(/[^a-z ]/gi, '');
       const resultArr = [];
 
       if (correctionValue) {
@@ -119,7 +119,21 @@ export const presetMask = {
 
   cvc: {
     mask() {
-      return prepareMaskArray(['###']);
+      let valueRangeList = [3];
+
+      if (window.paymentSystemInfo.cvcLength) {
+        valueRangeList = window.paymentSystemInfo.cvcLength;
+      }
+
+      const maskNumLength = valueRangeList[valueRangeList.length - 1];
+
+      switch (maskNumLength) {
+        case 3:
+          return prepareMaskArray(['###']);
+
+        default:
+          return prepareMaskArray(['####']);
+      }
     },
     pipe: null,
     guide: true,

@@ -200,3 +200,7 @@ option {
   line-height: 0;
   letter-spacing: 0;
 }
+
+input::-ms-clear {
+  display: none;
+}

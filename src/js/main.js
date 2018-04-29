@@ -1,11 +1,13 @@
-import { setMask } from './module/presetMask';
+import { setMask } from './module/mask';
+import { isValid } from './module/validation';
 
+const formSelector = '.js-form';
 const fieldSelector = '.js-field';
-const elements = document.querySelectorAll(fieldSelector);
 
-function isValid(field, validType) {
-  return false;
-}
+window.paymentSystemInfo = {};
+
+const form = document.querySelector(formSelector);
+const elements = form.querySelectorAll(fieldSelector);
 
 for (let i = 0; i < elements.length; i += 1) {
   const field = elements[i];
@@ -31,7 +33,7 @@ for (let i = 0; i < elements.length; i += 1) {
     input.addEventListener('blur', () => {
       field.classList.remove('focus');
 
-      if (isValid(input, dataType)) {
+      if (isValid(input.value, dataType, true)) {
         field.classList.add('valid');
       } else {
         field.classList.add('error');
@@ -39,3 +41,14 @@ for (let i = 0; i < elements.length; i += 1) {
     });
   }
 }
+
+window.addEventListener('changePaymentSystem', (event) => {
+  const paymentSystemInfo = event.detail;
+
+  const { name } = paymentSystemInfo;
+
+  if (window.paymentSystemInfo.name !== name) {
+    window.paymentSystemInfo = paymentSystemInfo;
+    console.log('paymentSystemName', name);
+  }
+});

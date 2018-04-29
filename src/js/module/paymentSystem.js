@@ -1,3 +1,5 @@
+import { generateCustomEvent } from './customEvent';
+
 export const paymentSystemList = [
   {
     name: 'amex',
@@ -197,15 +199,25 @@ export function getPaymentSystem(pan) {
         const range = binRangeList[j];
 
         if (range.start <= bin && bin <= range.end) {
-          return {
+          const result = {
             name: paymentSystemItem.name,
             cardLength: paymentSystemItem.cardLength,
             cvcLength: paymentSystemItem.cvcLength,
           };
+
+          generateCustomEvent('changePaymentSystem', result);
+
+          return result;
         }
       }
     }
   }
+
+  generateCustomEvent('changePaymentSystem', {
+    name: 'undefined',
+    cardLength: [14, 15, 16, 17, 18, 19],
+    cvcLength: [3, 4],
+  });
 
   return null;
 }

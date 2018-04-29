@@ -62,6 +62,7 @@
     "yargs": "^11.1.0"
   },
   "dependencies": {
+    "dayjs": "^1.5.16",
     "text-mask-addons": "^3.7.2",
     "vanilla-text-mask": "^5.0.1"
   }
