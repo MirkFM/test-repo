@@ -33,6 +33,7 @@ gulp.task('dev:script', () =>
   gulp
     .src(path.src.script)
     .pipe($.plumber({ errorHandler: global.errorHandler }))
+    .pipe($.sourcemaps.init())
     .pipe($.data((file) => {
       const fileFullName = file.path;
       const fileNameForSave = `${filePath.basename(fileFullName)}`;
@@ -42,6 +43,7 @@ gulp.task('dev:script', () =>
         .bundle()
         .pipe(source(fileNameForSave))
         .pipe(buffer())
+        .pipe($.sourcemaps.write())
         .pipe(gulp.dest(path.build.script));
     })));
 

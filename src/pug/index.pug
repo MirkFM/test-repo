@@ -1,13 +1,13 @@
 extends _layout.pug
 
-mixin formField(fieldName)
+mixin formField(fieldClass, fieldName)
   +e.field.js-field
-    +e.input(class=fieldName)
-      input(type="text" data-type=fieldName value=data("form.field." + fieldName + ".val") placeholder=data("form.field." + fieldName + ".placeholder"))/
+    +e.input(class=fieldClass)
+      input(type="text" name=fieldName data-type=fieldClass value=data("form.field." + fieldClass + ".val") placeholder=data("form.field." + fieldClass + ".placeholder"))/
     +e.hint-icon
-    //- +e.hint-text.valid=data("form.field." + fieldName + ".hint.help")
-    //- +e.hint-text.error=data("form.field." + fieldName+ ".hint.error")
-    +e.hint-text.focus=data("form.field." + fieldName + ".hint.help")
+    //- +e.hint-text.valid=data("form.field." + fieldClass + ".hint.help")
+    //- +e.hint-text.error=data("form.field." + fieldClass+ ".hint.error")
+    +e.hint-text.focus=data("form.field." + fieldClass + ".hint.help")
 
 block order-sum
   +e.order-sum
@@ -15,26 +15,26 @@ block order-sum
     +e.order-total=data("form.order.sum")
 
 block content
-  +b.FORM.b-card-form.js-form
+  +b.FORM.b-card-form.js-form(action="" method="GET")
     +e.field-list
-      +formField('cardnumber')
+      +formField('cardnumber', 'cardnumber')
 
-      +e.field-group
-        +formField('expdate')
-        +formField('cvc')
+      +e.field-group.--left-hint
+        +formField('expdate', 'expdate')
+        +formField('cvc', 'cvc')
 
-      +formField('cardholder')
-      +formField('email')
-      +formField('phone')
-      +formField('city')
+      +formField('cardholder', 'cardholder')
+      +formField('email', 'email')
+      +formField('phone', 'phone')
+      +formField('city', 'city')
 
     +e.check-list
       +b.e-checkbox
         +e.INPUT.input(type='checkbox' id="check-1")
         +e.LABEL.label(for="check-1" checked)=data("form.send.receipt.label")
 
-  +e.btn
-    input.e-btn(type='submit' value=data("form.btn.submit.val"))/
+    +e.btn
+      input.e-btn(type='submit' value=data("form.btn.submit.val"))/
 
     //- input.e-btn.primary(type='submit' value=data("form.btn.submit.val"))/
     //- input.e-btn.secondary(type='submit' value=data("form.btn.submit.val"))/
