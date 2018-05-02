@@ -3,8 +3,27 @@ import { isValid } from './module/validation';
 
 const formSelector = '.js-form';
 const fieldSelector = '.js-field';
+const formCloseSelector = '.js-popup-close';
 
 window.paymentSystemInfo = {};
+
+function sendParentMessage(msg) {
+  const { parent } = window;
+
+  if (parent.postMessage) {
+    parent.postMessage(msg, '*');
+  }
+}
+
+function getParentMethod(method, params) {
+  const posData = {
+    method,
+    params,
+  };
+  const message = JSON.stringify(posData);
+
+  sendParentMessage(message);
+}
 
 const forms = document.querySelectorAll(formSelector);
 
@@ -46,6 +65,8 @@ for (let i = 0; i < forms.length; i += 1) {
   }
 
   form.addEventListener('submit', (event) => {
+    let error = 0;
+
     for (let j = 0; j < elements.length; j += 1) {
       const field = elements[j];
       let input;
@@ -65,9 +86,17 @@ for (let i = 0; i < forms.length; i += 1) {
           event.preventDefault();
           event.stopPropagation();
 
+          error += 1;
+
           field.classList.add('error');
         }
       }
+    }
+
+    if (!error) {
+      event.preventDefault();
+      event.stopPropagation();
+      getParentMethod('popupPaymentDone', {});
     }
   });
 }
@@ -81,3 +110,13 @@ window.addEventListener('changePaymentSystem', (event) => {
     window.paymentSystemInfo = paymentSystemInfo;
   }
 });
+
+const btnCloseList = document.querySelectorAll(formCloseSelector);
+
+for (let i = 0; i < btnCloseList.length; i += 1) {
+  const btnClose = btnCloseList[i];
+
+  btnClose.addEventListener('click', () => {
+    getParentMethod('popupFormClose', {});
+  });
+}
